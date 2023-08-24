@@ -12,7 +12,7 @@ Bem-vindo à API de Gerenciamento de Estoque!
 
 ### Adicionar um produto
 
-**Endpoint:** `POST /add_produto`
+**Endpoint:** `POST /add_product`
 
 **Corpo da Requisição:**
 ```json
