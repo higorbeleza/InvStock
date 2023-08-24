@@ -22,3 +22,14 @@ Bem-vindo à API de Gerenciamento de Estoque!
   "price": "3000,00",
   "qt": 15
 }
+```
+
+## Configuração
+A API utiliza as seguintes variáveis de ambiente:
+
+PORT: porta em que o servidor será executado (padrão: 3000)
+
+## Contribuição
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e enviar pull requests.
+
+Contato: higorbeleza297@gmail.com
