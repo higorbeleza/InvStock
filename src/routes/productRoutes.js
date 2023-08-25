@@ -3,9 +3,11 @@ const ProductController = require('../controllers/ProductController');
 
 const router = Router();
 
-router.post('/add_product', ProductController.add_product);
-router.get('/product_name', ProductController.findByName);
-router.get('/all_products', ProductController.findAll);
-router.get('/product_id/:id', ProductController.findById);
+router.post('/product', ProductController.add_product);
+router.get('/product', ProductController.findByName);
+router.get('/product', ProductController.findAll);
+router.get('/product/:id', ProductController.findById);
+router.put('/product/:id', ProductController.updateProduct);
+router.delete('/product/:id', ProductController.deleteProduct);
 
 module.exports = router;

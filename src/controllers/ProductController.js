@@ -41,7 +41,7 @@ class ProductController {
     }
 
     static findByName = async (req, res) => {
-        const name = req.body.name;
+        const name = req.query.name;
         try {
             const product = await Products.find({ name: name });
             return res.status(200).json(product);
@@ -57,6 +57,16 @@ class ProductController {
             return res.status().json({message: 'Produto atualizado: ', product});
         } catch (error) {
             return res.status(400).json({message: error.message});
+        }
+    }
+
+    static deleteProduct = async (req, res) => {
+        const id = req.params.id;
+        try {
+            const product = await Products.findByIdAndDelete(id);
+            return res.status(200).json(product);
+        } catch (error) {
+            return res.status(500).json({message: error.message});
         }
     }
 }
