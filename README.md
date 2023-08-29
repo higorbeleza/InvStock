@@ -1,6 +1,6 @@
 # InvStock
 
-O Sistema de Controle de Estoque é uma aplicação desenvolvida em Node.js que permite a gestão eficiente do estoque de produtos, incluindo funcionalidades de entrada e saída de produtos, bem como o registro de fornecedores.
+O InvStock é uma aplicação desenvolvida em Node.js que permite a gestão eficiente do estoque de produtos, incluindo funcionalidades de entrada e saída de produtos, bem como o registro de fornecedores.
 
 ## Pré-requisitos
 
