@@ -6,10 +6,13 @@ const transactionSchema = new Schema({
         type: Schema.Types.ObjectId
     },
     type: {
-        type: String
+        type: String,
+        enum: ['input', 'output'],
+        required: true
     },
     exitQuantity: {
-        type: Number
+        type: Number,
+        required: true
     }
 }, {
     versionKey: false
