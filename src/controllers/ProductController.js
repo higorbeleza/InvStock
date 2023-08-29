@@ -1,70 +1,61 @@
-const Products = require('../models/Product');
+const { Products } = require('../models');
 
 class ProductController {
-    static add_product = async (req, res) => {
-        const {name, description, price, quantity} = req.body;
+    static getProducts = async (req, res) => {
         try {
-            const product = await Products.create({
-                name: name,
-                description: description,
-                price: price,
-                quantity: quantity
-            });
-            return res.status(201).send(product);
+            const data = await Products.find();
+            return res.status(200).json(data);
         } catch (error) {
-            return res.status(500).send({message: error.message});
+            return res.staus(500).json({message: error.message});
         }
     }
 
-    static findAll = async (req, res) => {
+    static getProductById = async (req, res) => {
         try {
-            const products = await Products.findAll();
-            return res.status(200).json(products);
-        } catch (error) {
-            return res.status(500).send({message: error.message});
-        }
-    }
-
-    static findById = async (req, res) => {
-        const id = req.params.id;
-        try {
-            const product = await Products.findById(id);
+            const id = req.params.id;
+            const data = await Products.findById(id);
             
-            if (product !== null) {
-                return res.status(200).json(product);
-            } else {
-                return res.status(500).send({message: "Id not found"});
-            }
+            console.log(data);
+            return res.status(200).json(data);
         } catch (error) {
-            return res.status(500).send({message: "Internal server error"});
+            return res.status(404).json({message: error.message});
         }
     }
 
-    static findByName = async (req, res) => {
-        const name = req.query.name;
+    static registerProduct = async (req, res) => {
         try {
-            const product = await Products.find({ name: name });
-            return res.status(200).json(product);
+            const {name, description, supplier, price, quantity} = req.body;
+            const data = await Products.create({name, description, supplier, price, quantity});
+
+            console.log(data);
+            return res.status(201).json(data);
         } catch (error) {
-            return res.status(400).json({message: error.message});
+            return res.status(500).json({message: error.message});
         }
     }
 
     static updateProduct = async (req, res) => {
-        const id = req.body.id;
         try {
-            const product = await Products.findByIdAndUpdate(id);
-            return res.status().json({message: 'Produto atualizado: ', product});
+            const id = req.params.id;
+            const { name, description, supplier, price, quantity } = req.body;
+            const data = await Products.findByIdAndUpdate(id, {
+                name, description, supplier, price, quantity
+            });
+
+            console.log(data);
+            return res.status(200).json(data);
         } catch (error) {
-            return res.status(400).json({message: error.message});
+            return res.status(500).json({message: error.message});
         }
     }
 
     static deleteProduct = async (req, res) => {
-        const id = req.params.id;
         try {
-            const product = await Products.findByIdAndDelete(id);
-            return res.status(200).json(product);
+            const id = req.params.id;
+            const data = await Products.findByIdAndDelete(id);
+
+            console.log(data);
+            return res.status(200).json(data);
         } catch (error) {
             return res.status(500).json({message: error.message});
         }

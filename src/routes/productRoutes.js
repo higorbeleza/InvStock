@@ -3,11 +3,11 @@ const ProductController = require('../controllers/ProductController');
 
 const router = Router();
 
-router.post('/product', ProductController.add_product);
-router.get('/product', ProductController.findByName);
-router.get('/product', ProductController.findAll);
-router.get('/product/:id', ProductController.findById);
-router.put('/product/:id', ProductController.updateProduct);
-router.delete('/product/:id', ProductController.deleteProduct);
+router
+    .get('/products', ProductController.getProducts)
+    .get('/products/:id', ProductController.getProductById)
+    .post('/add-product', ProductController.registerProduct)
+    .put('/update-product/:id', ProductController.updateProduct)
+    .delete('/del-product/:id', ProductController.deleteProduct)
 
 module.exports = router;
