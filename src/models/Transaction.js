@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 
-const transictionSchema = new Schema({
+const transactionSchema = new Schema({
     idProduct: {
         type: Schema.Types.ObjectId
     },
@@ -15,6 +15,6 @@ const transictionSchema = new Schema({
     versionKey: false
 });
 
-const Transictions = mongoose.model('Transiction', transictionSchema);
+const Transactions = mongoose.model('Transaction', transactionSchema);
 
-module.exports = Transictions;
+module.exports = Transactions;
