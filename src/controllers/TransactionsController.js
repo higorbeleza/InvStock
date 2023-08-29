@@ -17,6 +17,14 @@ class TransactionsController {
 
             const product = await Products.findById(id);
 
+            if(product.quantity < exitQuantity) {
+                return res.status(400).json({message: `insufficient stock: ${product.quantity}`})
+            }
+
+            if(exitQuantity === 0) {
+                return res.status(400).json({message: 'enter a valid number!'})
+            }
+
             product.quantity -= exitQuantity;
             await product.save();
 
