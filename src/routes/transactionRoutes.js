@@ -5,6 +5,7 @@ const router = Router();
 
 router
     .get('/transactions', TransactionsController.getTransactions)
-    .post('/exit/:id', TransactionsController.registrarSaida)
+    .post('/output/:id', TransactionsController.registrarSaida)
+    .post('/input/:id', TransactionsController.registrarEntrada)
 
 module.exports = router;

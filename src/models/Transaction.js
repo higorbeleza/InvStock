@@ -10,7 +10,7 @@ const transactionSchema = new Schema({
         enum: ['input', 'output'],
         required: true
     },
-    exitQuantity: {
+    quantity: {
         type: Number,
         required: true
     }
